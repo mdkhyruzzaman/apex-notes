@@ -1,0 +1,21 @@
+// First clear the errors
+apex.message.clearErrors();
+
+var emp     = Number($v('P341_EMPLOYEE_ID'));
+var gross   = Number($v('P341_GROSS')); 
+
+
+if(emp == null || emp == '') {
+    // Now show new errors
+    apex.message.showErrors([
+        {
+            type:       "error",
+            location:   ["page", "inline"],
+            pageItem:   "P341_EMPLOYEE_ID",
+            message:    "Employee Name must have some value.",
+            unsafe:     false
+        }
+    ]); 
+    //To stop the further actions from firing
+    apex.da.cancelEvent.call(this);
+}
